@@ -1,7 +1,37 @@
 import React from "react";
-import { ArrowRight, BadgePercent, CheckCircle2, Crown, Dumbbell, Flame, Gift, ShieldCheck, ShoppingCart, Sparkles, Star, Target, Trophy, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+
+function makeIcon(symbol) {
+  return function Icon({ className = "" }) {
+    return (
+      <span className={`inline-flex items-center justify-center leading-none ${className}`} aria-hidden="true">
+        {symbol}
+      </span>
+    );
+  };
+}
+
+const ArrowRight = makeIcon("→");
+const BadgePercent = makeIcon("％");
+const CheckCircle2 = makeIcon("✓");
+const Crown = makeIcon("♛");
+const Dumbbell = makeIcon("🏋️");
+const Flame = makeIcon("🔥");
+const Gift = makeIcon("🎁");
+const ShieldCheck = makeIcon("🛡️");
+const ShoppingCart = makeIcon("🛒");
+const Sparkles = makeIcon("✦");
+const Star = makeIcon("★");
+const Target = makeIcon("◎");
+const Trophy = makeIcon("🏆");
+const Zap = makeIcon("⚡");
+
+function Card({ className = "", children }) {
+  return <div className={className}>{children}</div>;
+}
+
+function CardContent({ className = "", children }) {
+  return <div className={className}>{children}</div>;
+}
 
 const COUPON_CODE = "PROTEINWAOKAZU";
 
