@@ -1,634 +1,842 @@
-import React from "react";
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>マイプロテインおすすめ完全ガイド｜クーポンコードPROTEINWAOKAZUでお得に購入</title>
+  <meta name="description" content="マイプロテインのおすすめ商品、セール対象商品、クーポンコードPROTEINWAOKAZUの使い方を初心者向けに分かりやすく紹介。Impactホエイ、EAA、クレアチン、ダイエットホエイなどを目的別に比較できます。" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="マイプロテインおすすめ完全ガイド" />
+  <meta property="og:description" content="マイプロテインを目的別に選べる購入ガイド。クーポンコードPROTEINWAOKAZUも紹介。" />
+  <meta property="og:locale" content="ja_JP" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --blue: #0ea5e9;
+      --blue-dark: #0284c7;
+      --yellow: #fde047;
+      --yellow-soft: #fef9c3;
+      --slate: #020617;
+      --green: #34d399;
+      --pink: #f9a8d4;
+      --shadow: 0 24px 60px rgba(15, 23, 42, 0.10);
+      --radius: 28px;
+    }
 
-function makeIcon(symbol) {
-  return function Icon({ className = "" }) {
-    return (
-      <span className={`inline-flex items-center justify-center leading-none ${className}`} aria-hidden="true">
-        {symbol}
-      </span>
-    );
-  };
-}
+    * { box-sizing: border-box; }
 
-const ArrowRight = makeIcon("→");
-const BadgePercent = makeIcon("％");
-const CheckCircle2 = makeIcon("✓");
-const Crown = makeIcon("♛");
-const Dumbbell = makeIcon("🏋️");
-const Flame = makeIcon("🔥");
-const Gift = makeIcon("🎁");
-const ShieldCheck = makeIcon("🛡️");
-const ShoppingCart = makeIcon("🛒");
-const Sparkles = makeIcon("✦");
-const Star = makeIcon("★");
-const Target = makeIcon("◎");
-const Trophy = makeIcon("🏆");
-const Zap = makeIcon("⚡");
+    html { scroll-behavior: smooth; }
 
-function Card({ className = "", children }) {
-  return <div className={className}>{children}</div>;
-}
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.75;
+    }
 
-function CardContent({ className = "", children }) {
-  return <div className={className}>{children}</div>;
-}
+    a { color: inherit; text-decoration: none; }
 
-const COUPON_CODE = "PROTEINWAOKAZU";
+    .topbar {
+      background: var(--slate);
+      color: var(--white);
+      text-align: center;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 8px 16px;
+    }
 
-const links = {
-  sale: "https://creatorlink.shop/4bMhStB",
-  official: "https://creatorlink.shop/4qFtZgW",
-  top: "https://creatorlink.shop/4rdo8zm",
-  bestsellers: "https://creatorlink.shop/3QJPPmb",
-  trial: "https://creatorlink.shop/3NAyF9i",
-  impactWhey: "https://creatorlink.shop/45s57kc",
-  impactEaa: "https://creatorlink.shop/4rfrOk5",
-  bcaa: "https://creatorlink.shop/3NK9alI",
-  creatinePowder: "https://creatorlink.shop/42Cf6Bn",
-  creatineTablet: "https://creatorlink.shop/4bexaHB",
-  dietWhey: "https://creatorlink.shop/3NzDlfB",
-  wheyIsolate: "https://creatorlink.shop/49exbt1",
-  clearWhey: "https://creatorlink.shop/4tE9Wku",
-  clearProteinSeries: "https://creatorlink.shop/3M1TycP",
-  soyProtein: "https://creatorlink.shop/4qKbXdy",
-  shaker: "https://creatorlink.shop/49Hmno6",
-  multivitamin: "https://creatorlink.shop/4b9oUIO",
-  omega3: "https://creatorlink.shop/3O1Q22E",
-  vitaminD3: "https://creatorlink.shop/4t3iiST",
-  zma: "https://creatorlink.shop/4jYTSWz",
-  betaAlanine: "https://creatorlink.shop/3ZqGmkP",
-  preWorkout: "https://creatorlink.shop/3ZrXLJR",
-  oats: "https://creatorlink.shop/3NZ3JiS",
-  wafers: "https://creatorlink.shop/3LGiSVL",
-  pancake: "https://creatorlink.shop/49Aucfg",
-  layeredBar: "https://creatorlink.shop/4qNrtoE",
-  wristWrap: "https://creatorlink.shop/3LY9blA",
-  liftingStrap: "https://creatorlink.shop/4tbkO9I",
-  elbowSleeve: "https://creatorlink.shop/3NAyOcQ",
-  kneeSleeve: "https://creatorlink.shop/3YZgpJ0",
-  leatherBelt: "https://creatorlink.shop/3LQa93k",
-  wear: "https://creatorlink.shop/4qegiVj",
-};
+    .topbar strong { color: var(--yellow); }
 
-const affiliateRel = "sponsored nofollow noopener noreferrer";
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
 
-function AffiliateButton({ href, children, variant = "primary", className = "" }) {
-  const base = "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition hover:scale-[1.02]";
-  const styles = {
-    primary: "bg-sky-500 text-white shadow-lg shadow-sky-500/25 hover:bg-sky-600",
-    dark: "bg-slate-950 text-white shadow-lg shadow-slate-900/20 hover:bg-slate-800",
-    light: "bg-white text-slate-950 border border-slate-200 hover:bg-slate-50",
-    yellow: "bg-yellow-300 text-slate-950 shadow-lg shadow-yellow-300/30 hover:bg-yellow-200",
-  };
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-  return (
-    <a href={href} target="_blank" rel={affiliateRel} className={`${base} ${styles[variant]} ${className}`}>
-      {children}
-      <ArrowRight className="h-4 w-4" />
-    </a>
-  );
-}
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 0;
+    }
 
-const rankingProducts = [
-  {
-    rank: 1,
-    name: "Impact ホエイ プロテイン",
-    tag: "まず迷ったらこれ",
-    summary: "価格・味・たんぱく質量のバランスがよく、初心者から上級者まで使いやすい定番商品。",
-    bestFor: "筋トレ初心者・増量・普段使い",
-    score: "4.8",
-    href: links.impactWhey,
-    color: "from-sky-100 to-cyan-50",
-    icon: Dumbbell,
-  },
-  {
-    rank: 2,
-    name: "Impact EAA",
-    tag: "トレ中の補給に",
-    summary: "必須アミノ酸を手軽に補給。減量中や長時間トレーニング時のドリンクとして使いやすい。",
-    bestFor: "減量中・トレ中ドリンク・競技者",
-    score: "4.7",
-    href: links.impactEaa,
-    color: "from-violet-100 to-sky-50",
-    icon: Zap,
-  },
-  {
-    rank: 3,
-    name: "Impact クレアチン モノハイドレート パウダー",
-    tag: "筋力・パワー重視",
-    summary: "高強度トレーニングやBIG3の重量更新を狙う人向け。コスパ重視ならパウダー版が強い。",
-    bestFor: "筋力アップ・BIG3・競技力向上",
-    score: "4.8",
-    href: links.creatinePowder,
-    color: "from-emerald-100 to-cyan-50",
-    icon: Trophy,
-  },
-  {
-    rank: 4,
-    name: "Impact ホエイ アイソレート",
-    tag: "高品質ホエイ",
-    summary: "脂質や糖質を抑えたい人向け。通常ホエイよりもすっきり使いたい人に合う。",
-    bestFor: "減量・高たんぱく・脂質控えめ",
-    score: "4.6",
-    href: links.wheyIsolate,
-    color: "from-blue-100 to-slate-50",
-    icon: ShieldCheck,
-  },
-  {
-    rank: 5,
-    name: "Impact ダイエット ホエイ",
-    tag: "減量サポート",
-    summary: "ダイエット中のたんぱく質補給に使いやすい。食事管理とセットで使う導線に向く。",
-    bestFor: "減量・置き換え・間食対策",
-    score: "4.5",
-    href: links.dietWhey,
-    color: "from-pink-100 to-orange-50",
-    icon: Target,
-  },
-];
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
 
-const categoryRows = [
-  {
-    category: "最初の1袋",
-    products: "Impact ホエイ / お試し商品 / シェイカー",
-    user: "初めてマイプロを買う人",
-    cta: "初心者セットを見る",
-    href: links.trial,
-  },
-  {
-    category: "筋肥大・増量",
-    products: "Impact ホエイ / ロールドオーツ / パンケーキミックス",
-    user: "食事量とたんぱく質量を増やしたい人",
-    cta: "増量向けを見る",
-    href: links.impactWhey,
-  },
-  {
-    category: "筋力・競技力",
-    products: "クレアチン / EAA / ベータアラニン / プレワークアウト",
-    user: "BIG3・格闘技・競技パフォーマンスを伸ばしたい人",
-    cta: "パワー系を見る",
-    href: links.creatinePowder,
-  },
-  {
-    category: "減量・ボディメイク",
-    products: "ダイエットホエイ / ホエイアイソレート / クリアプロテイン",
-    user: "脂質・糖質を抑えながらたんぱく質を摂りたい人",
-    cta: "減量向けを見る",
-    href: links.dietWhey,
-  },
-  {
-    category: "健康サプリ",
-    products: "マルチビタミン / オメガ3 / ビタミンD3 / ZMA",
-    user: "食生活の不足を補いたい人",
-    cta: "サプリを見る",
-    href: links.multivitamin,
-  },
-  {
-    category: "ギア・ウェア",
-    products: "リストラップ / リフティングストラップ / ベルト / ウェア",
-    user: "トレーニングの安定感を上げたい人",
-    cta: "ギアを見る",
-    href: links.wristWrap,
-  },
-];
+    .logo-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 16px;
+      background: var(--blue);
+      color: var(--white);
+      box-shadow: 0 14px 30px rgba(14, 165, 233, 0.25);
+    }
 
-const guideCards = [
-  {
-    title: "初心者は何から買うべき？",
-    label: "初回購入",
-    body: "まずはImpact ホエイ、シェイカー、お試し商品から選ぶと失敗しにくい。",
-    href: links.trial,
-  },
-  {
-    title: "最安で買う手順",
-    label: "割引攻略",
-    body: `セール対象商品を選び、購入画面で ${COUPON_CODE} を入力するだけ。`,
-    href: links.sale,
-  },
-  {
-    title: "ホエイとEAAの違い",
-    label: "比較",
-    body: "毎日のたんぱく質補給はホエイ、トレーニング中の補給はEAAという整理が分かりやすい。",
-    href: links.impactEaa,
-  },
-];
+    .logo-sub {
+      display: block;
+      margin-top: -3px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
 
-const seoClusters = [
-  {
-    keyword: "マイプロテイン おすすめ",
-    intent: "商品選び",
-    page: "人気ランキング・目的別おすすめ",
-    cta: "ベストセラーを見る",
-    href: links.bestsellers,
-  },
-  {
-    keyword: "マイプロテイン 安く買う方法",
-    intent: "割引・クーポン",
-    page: "セール活用・クーポン入力手順",
-    cta: "セール対象を見る",
-    href: links.sale,
-  },
-  {
-    keyword: "マイプロテイン プロテイン 初心者",
-    intent: "初回購入",
-    page: "初心者向け購入ガイド",
-    cta: "お試し商品を見る",
-    href: links.trial,
-  },
-  {
-    keyword: "マイプロテイン 味 おすすめ",
-    intent: "味・飲みやすさ",
-    page: "人気フレーバー比較・レビュー",
-    cta: "Impact ホエイを見る",
-    href: links.impactWhey,
-  },
-  {
-    keyword: "プロテイン おすすめ 筋トレ",
-    intent: "一般プロテイン比較",
-    page: "目的別プロテイン選び",
-    cta: "目的別に選ぶ",
-    href: links.impactWhey,
-  },
-  {
-    keyword: "EAA BCAA 違い",
-    intent: "成分比較",
-    page: "EAA・BCAA比較ガイド",
-    cta: "EAAを見る",
-    href: links.impactEaa,
-  },
-];
+    .nav {
+      display: flex;
+      gap: 24px;
+      color: #475569;
+      font-size: 14px;
+      font-weight: 800;
+    }
 
-const faqItems = [
-  {
-    q: "マイプロテインはどこから買うのが安い？",
-    a: `セール対象商品を確認し、購入画面で ${COUPON_CODE} を入力する導線を基本にします。価格や割引率は販売ページで最終確認してください。`,
-  },
-  {
-    q: "初心者はどの商品から選ぶべき？",
-    a: "最初はImpact ホエイ プロテイン、お試し商品、シェイカーの組み合わせが分かりやすいです。目的が筋力向上ならクレアチンも候補です。",
-  },
-  {
-    q: "Impact ホエイとホエイアイソレートの違いは？",
-    a: "通常のImpact ホエイはコスパ重視、ホエイアイソレートは脂質や糖質を抑えたい人向けとして見せると選びやすくなります。",
-  },
-  {
-    q: "EAAとBCAAはどちらを選ぶべき？",
-    a: "トレーニング中の必須アミノ酸補給を広く訴求するならEAA、価格やシンプルさを重視するならBCAAという見せ方にします。",
-  },
-];
+    .nav a:hover { color: var(--blue); }
 
-const trustItems = [
-  { icon: BadgePercent, text: "クーポンが使いやすい" },
-  { icon: Crown, text: "人気商品から選べる" },
-  { icon: CheckCircle2, text: "初心者にも分かりやすい" },
-  { icon: ShieldCheck, text: "目的別に比較できる" },
-];
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1.2;
+      border: 1px solid transparent;
+      transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
 
-export default function MyproteinAffiliateMock() {
-  return (
-    <main className="min-h-screen bg-slate-50 text-slate-950">
-      <div className="bg-slate-950 px-4 py-2 text-center text-sm font-bold text-white">
-        当サイト限定コード <span className="text-yellow-300">{COUPON_CODE}</span> でマイプロテインをお得に購入
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--blue); color: var(--white); box-shadow: 0 18px 35px rgba(14, 165, 233, 0.25); }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-dark { background: var(--slate); color: var(--white); }
+    .btn-light { background: var(--white); color: var(--ink); border-color: var(--line); }
+    .btn-yellow { background: var(--yellow); color: var(--ink); box-shadow: 0 18px 35px rgba(253, 224, 71, 0.25); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(14,165,233,.18), transparent 36%), radial-gradient(circle at bottom left, rgba(250,204,21,.16), transparent 34%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 48px;
+      padding: 82px 0;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #f0f9ff;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin: 22px 0 20px;
+      max-width: 760px;
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.08;
+      letter-spacing: -0.055em;
+      font-weight: 950;
+    }
+
+    .blue { color: var(--blue); }
+
+    .lead {
+      max-width: 700px;
+      color: #475569;
+      font-size: 18px;
+      font-weight: 650;
+    }
+
+    .coupon-box {
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: var(--radius);
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .coupon-box small {
+      display: block;
+      color: var(--muted);
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .coupon-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .coupon-code {
+      display: inline-block;
+      padding: 14px 18px;
+      border-radius: 20px;
+      background: #f0f9ff;
+      border: 2px dashed #7dd3fc;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -0.03em;
+      word-break: break-word;
+    }
+
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 18px;
+      background: #f8fafc;
+      color: #334155;
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .hero-card-wrap { position: relative; }
+
+    .floating-badge {
+      position: absolute;
+      top: 24px;
+      right: -20px;
+      z-index: 2;
+      padding: 16px 20px;
+      border-radius: 999px;
+      background: var(--yellow);
+      color: var(--ink);
+      text-align: center;
+      font-weight: 950;
+      line-height: 1.35;
+      box-shadow: 0 22px 40px rgba(253, 224, 71, 0.35);
+      transform: rotate(6deg);
+    }
+
+    .hero-card {
+      border-radius: 32px;
+      background: var(--slate);
+      padding: 20px;
+      box-shadow: 0 35px 80px rgba(2, 6, 23, 0.28);
+    }
+
+    .hero-panel {
+      border-radius: 26px;
+      padding: 28px;
+      color: var(--white);
+      background: linear-gradient(135deg, #0f172a, #1e293b 45%, #075985);
+    }
+
+    .map-title {
+      color: #bae6fd;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .map-list { display: grid; gap: 14px; margin-top: 28px; }
+
+    .map-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px;
+      border-radius: 24px;
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .map-item p { margin: 0; line-height: 1.35; }
+    .map-item small { color: rgba(15,23,42,.65); font-weight: 850; }
+    .map-white { background: var(--white); }
+    .map-blue { background: #38bdf8; color: var(--white); }
+    .map-blue small { color: rgba(255,255,255,.8); }
+    .map-green { background: var(--green); }
+    .map-pink { background: var(--pink); }
+
+    .map-tag {
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, .1);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .flow-box {
+      margin-top: 26px;
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.1);
+    }
+
+    .flow-box small {
+      color: #cbd5e1;
+      font-weight: 850;
+    }
+
+    .flow-box p {
+      margin: 6px 0 0;
+      font-size: 22px;
+      line-height: 1.4;
+      font-weight: 950;
+    }
+
+    section { scroll-margin-top: 86px; }
+
+    .section { padding: 72px 0; }
+    .section-white { background: var(--white); }
+    .section-head { margin-bottom: 36px; }
+    .eyebrow { color: var(--blue); font-size: 14px; font-weight: 950; letter-spacing: .02em; margin-bottom: 8px; }
+    h2 { font-size: clamp(30px, 4vw, 52px); line-height: 1.15; letter-spacing: -0.045em; font-weight: 950; margin-bottom: 14px; }
+    .section-desc { max-width: 760px; color: var(--muted); font-weight: 650; }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 42px 0;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 16px rgba(15,23,42,.04);
+    }
+
+    .card-pad { padding: 24px; }
+
+    .icon-box {
+      display: grid;
+      place-items: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
+      background: #f0f9ff;
+      color: var(--blue);
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .card-title { margin-bottom: 6px; font-size: 18px; font-weight: 950; }
+    .card-text { margin: 0; color: var(--muted); font-size: 14px; font-weight: 600; }
+
+    .ranking-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 100%;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+    .product-visual {
+      min-height: 144px;
+      padding: 20px;
+      background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+    }
+
+    .product-visual.v2 { background: linear-gradient(135deg, #ede9fe, #f0f9ff); }
+    .product-visual.v3 { background: linear-gradient(135deg, #d1fae5, #ecfeff); }
+    .product-visual.v4 { background: linear-gradient(135deg, #dbeafe, #f8fafc); }
+    .product-visual.v5 { background: linear-gradient(135deg, #fce7f3, #fff7ed); }
+
+    .product-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .product-icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: var(--white);
+      font-size: 24px;
+      box-shadow: 0 10px 22px rgba(15,23,42,.06);
+    }
+
+    .rank-label {
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--slate);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .product-block {
+      width: 96px;
+      height: 38px;
+      margin-top: 22px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.72);
+    }
+
+    .product-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 20px;
+    }
+
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #f0f9ff;
+      color: #0284c7;
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .product-name {
+      margin-bottom: 10px;
+      font-size: 20px;
+      line-height: 1.35;
+      font-weight: 950;
+    }
+
+    .stars { color: #facc15; font-weight: 950; margin-bottom: 12px; }
+    .stars span { color: #334155; margin-left: 6px; font-size: 13px; }
+    .bestfor { margin: 14px 0 18px; padding: 12px; border-radius: 16px; background: #f8fafc; color: #334155; font-size: 14px; font-weight: 850; }
+    .product-body .btn { margin-top: auto; width: 100%; }
+
+    .compare-table {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .table-row {
+      display: grid;
+      grid-template-columns: 1.2fr 1.8fr 1.5fr 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 20px;
+      font-size: 14px;
+    }
+
+    .table-head {
+      background: var(--slate);
+      color: var(--white);
+      font-weight: 950;
+    }
+
+    .table-row:not(.table-head):nth-child(odd) { background: #f8fafc; }
+    .table-row:not(.table-head):nth-child(even) { background: var(--white); }
+    .table-row strong { font-weight: 950; }
+    .table-row .muted { color: var(--muted); font-weight: 650; }
+
+    .purpose-grid, .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .coupon-section {
+      padding: 72px 0;
+    }
+
+    .coupon-panel {
+      overflow: hidden;
+      border-radius: 34px;
+      background: var(--slate);
+      color: var(--white);
+      box-shadow: 0 32px 80px rgba(2, 6, 23, .25);
+    }
+
+    .coupon-panel-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 32px;
+      align-items: center;
+      padding: 48px;
+    }
+
+    .coupon-panel h2 { color: var(--white); }
+    .coupon-panel p { color: #cbd5e1; }
+
+    .coupon-code-big {
+      border: 2px dashed var(--yellow);
+      border-radius: 30px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .coupon-code-big small {
+      color: var(--muted);
+      font-weight: 950;
+    }
+
+    .coupon-code-big p {
+      margin: 8px 0 14px;
+      color: var(--ink);
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      font-weight: 950;
+      word-break: break-word;
+    }
+
+    .notice {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid #fde68a;
+      background: #fffbeb;
+      color: #78350f;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .notice strong { display: block; margin-bottom: 6px; font-size: 15px; }
+
+    .footer {
+      background: var(--slate);
+      color: var(--white);
+      padding: 48px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .8fr .8fr .8fr;
+      gap: 32px;
+    }
+
+    .footer p { color: #94a3b8; }
+    .footer h3 { margin-bottom: 12px; font-size: 15px; }
+    .footer-links { display: grid; gap: 10px; color: #94a3b8; font-size: 14px; }
+    .footer-links a:hover { color: var(--white); }
+
+    .mobile-only { display: none; }
+
+    @media (max-width: 980px) {
+      .nav { display: none; }
+      .hero-grid, .coupon-panel-grid { grid-template-columns: 1fr; }
+      .trust-row, .benefit-grid { grid-template-columns: repeat(2, 1fr); }
+      .ranking-grid { grid-template-columns: repeat(2, 1fr); }
+      .purpose-grid, .guide-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 24px, 1180px); }
+      .header-inner { gap: 12px; }
+      .header .btn { display: none; }
+      .hero-grid { padding: 54px 0; }
+      .trust-row, .benefit-grid, .ranking-grid, .footer-grid { grid-template-columns: 1fr; }
+      .coupon-inner { align-items: stretch; }
+      .coupon-inner .btn-row, .coupon-inner .btn { width: 100%; }
+      .btn-row .btn { width: 100%; }
+      .floating-badge { right: 8px; top: -18px; }
+      .table-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      .table-head { display: none; }
+      .table-row { border-bottom: 1px solid var(--line); }
+      .coupon-panel-grid { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">当サイト推奨コード <strong>PROTEINWAOKAZU</strong> でマイプロテインをお得に購入</div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="トップへ戻る">
+        <span class="logo-mark">🏋️</span>
+        <span>プロテイン攻略ナビ<span class="logo-sub">お得に買える購入ガイド</span></span>
+      </a>
+      <nav class="nav" aria-label="ページ内メニュー">
+        <a href="#ranking">ランキング</a>
+        <a href="#compare">目的別比較</a>
+        <a href="#guide">買い方ガイド</a>
+        <a href="#coupon">クーポン</a>
+      </nav>
+      <a class="btn btn-dark" href="https://creatorlink.shop/4bMhStB" target="_blank" rel="sponsored nofollow noopener noreferrer">セールを見る →</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="top" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">✦ 迷わず選べるマイプロテイン購入ガイド</div>
+          <h1>マイプロテインを、<span class="blue">お得に</span>賢く買う。</h1>
+          <p class="lead">目的別におすすめ商品を整理し、セール対象ページと商品ページへ分かりやすく案内します。購入画面ではクーポンコードを忘れずに入力してください。</p>
+
+          <div class="coupon-box">
+            <small>当サイト推奨クーポンコード</small>
+            <div class="coupon-inner">
+              <span class="coupon-code">PROTEINWAOKAZU</span>
+              <div class="btn-row">
+                <a class="btn btn-primary" href="https://creatorlink.shop/4bMhStB" target="_blank" rel="sponsored nofollow noopener noreferrer">セール対象を見る →</a>
+                <a class="btn btn-light" href="https://creatorlink.shop/45s57kc" target="_blank" rel="sponsored nofollow noopener noreferrer">まずは定番を見る →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-item">％ クーポンが使いやすい</div>
+            <div class="trust-item">♛ 人気商品から選べる</div>
+            <div class="trust-item">✓ 初心者にも分かりやすい</div>
+            <div class="trust-item">🛡️ 目的別に比較できる</div>
+          </div>
+        </div>
+
+        <div class="hero-card-wrap">
+          <div class="floating-badge">お得に<br>購入</div>
+          <div class="hero-card">
+            <div class="hero-panel">
+              <p class="map-title">目的別おすすめマップ</p>
+              <div class="map-list">
+                <div class="map-item map-white"><div><p>Impact ホエイ</p><small>目的別おすすめ</small></div><span class="map-tag">王道</span></div>
+                <div class="map-item map-blue"><div><p>EAA / BCAA</p><small>目的別おすすめ</small></div><span class="map-tag">トレ中</span></div>
+                <div class="map-item map-green"><div><p>クレアチン</p><small>目的別おすすめ</small></div><span class="map-tag">筋力</span></div>
+                <div class="map-item map-pink"><div><p>ダイエットホエイ</p><small>目的別おすすめ</small></div><span class="map-tag">減量</span></div>
+              </div>
+              <div class="flow-box">
+                <small>買い方の流れ</small>
+                <p>商品を選ぶ → セールを確認 → コード入力</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-          <a href="#top" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-sky-500 text-white shadow-lg shadow-sky-500/25">
-              <Dumbbell className="h-5 w-5" />
-            </div>
+    <section class="container">
+      <div class="benefit-grid">
+        <article class="card card-pad"><div class="icon-box">🎁</div><h3 class="card-title">初回購入</h3><p class="card-text">お試し商品・シェイカーもあわせて確認できます。</p></article>
+        <article class="card card-pad"><div class="icon-box">🔥</div><h3 class="card-title">セール活用</h3><p class="card-text">クーポンコードを使ってお得に購入できます。</p></article>
+        <article class="card card-pad"><div class="icon-box">🛒</div><h3 class="card-title">商品別に選べる</h3><p class="card-text">気になる商品をすぐに確認できます。</p></article>
+        <article class="card card-pad"><div class="icon-box">★</div><h3 class="card-title">比較で納得</h3><p class="card-text">目的に合う商品を選びやすく整理しています。</p></article>
+      </div>
+    </section>
+
+    <section id="ranking" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">POPULAR RANKING</p>
+          <h2>マイプロテインおすすめランキング</h2>
+          <p class="section-desc">初めての方でも選びやすいように、目的別に人気の商品をまとめました。</p>
+          <div style="margin-top:18px"><a class="btn btn-light" href="https://creatorlink.shop/3QJPPmb" target="_blank" rel="sponsored nofollow noopener noreferrer">ベストセラーを見る →</a></div>
+        </div>
+
+        <div class="ranking-grid">
+          <article class="card product-card">
+            <div class="product-visual"><div class="product-top"><span class="product-icon">🏋️</span><span class="rank-label">No.1</span></div><div class="product-block"></div></div>
+            <div class="product-body"><span class="tag">まず迷ったらこれ</span><h3 class="product-name">Impact ホエイ プロテイン</h3><div class="stars">★★★★★ <span>4.8</span></div><p class="card-text">価格・味・たんぱく質量のバランスがよく、初心者から上級者まで使いやすい定番商品。</p><div class="bestfor">筋トレ初心者・増量・普段使い</div><a class="btn btn-primary" href="https://creatorlink.shop/45s57kc" target="_blank" rel="sponsored nofollow noopener noreferrer">商品を見る →</a></div>
+          </article>
+
+          <article class="card product-card">
+            <div class="product-visual v2"><div class="product-top"><span class="product-icon">⚡</span><span class="rank-label">No.2</span></div><div class="product-block"></div></div>
+            <div class="product-body"><span class="tag">トレ中の補給に</span><h3 class="product-name">Impact EAA</h3><div class="stars">★★★★★ <span>4.7</span></div><p class="card-text">必須アミノ酸を手軽に補給。減量中や長時間トレーニング時のドリンクとして使いやすい。</p><div class="bestfor">減量中・トレ中ドリンク・競技者</div><a class="btn btn-primary" href="https://creatorlink.shop/4rfrOk5" target="_blank" rel="sponsored nofollow noopener noreferrer">商品を見る →</a></div>
+          </article>
+
+          <article class="card product-card">
+            <div class="product-visual v3"><div class="product-top"><span class="product-icon">🏆</span><span class="rank-label">No.3</span></div><div class="product-block"></div></div>
+            <div class="product-body"><span class="tag">筋力・パワー重視</span><h3 class="product-name">Impact クレアチン モノハイドレート パウダー</h3><div class="stars">★★★★★ <span>4.8</span></div><p class="card-text">高強度トレーニングやBIG3の重量更新を狙う人向け。パウダー版を確認できます。</p><div class="bestfor">筋力アップ・BIG3・競技力向上</div><a class="btn btn-primary" href="https://creatorlink.shop/42Cf6Bn" target="_blank" rel="sponsored nofollow noopener noreferrer">商品を見る →</a></div>
+          </article>
+
+          <article class="card product-card">
+            <div class="product-visual v4"><div class="product-top"><span class="product-icon">🛡️</span><span class="rank-label">No.4</span></div><div class="product-block"></div></div>
+            <div class="product-body"><span class="tag">高品質ホエイ</span><h3 class="product-name">Impact ホエイ アイソレート</h3><div class="stars">★★★★☆ <span>4.6</span></div><p class="card-text">脂質や糖質を抑えたい人向け。通常ホエイよりもすっきり使いたい人に合います。</p><div class="bestfor">減量・高たんぱく・脂質控えめ</div><a class="btn btn-primary" href="https://creatorlink.shop/49exbt1" target="_blank" rel="sponsored nofollow noopener noreferrer">商品を見る →</a></div>
+          </article>
+
+          <article class="card product-card">
+            <div class="product-visual v5"><div class="product-top"><span class="product-icon">◎</span><span class="rank-label">No.5</span></div><div class="product-block"></div></div>
+            <div class="product-body"><span class="tag">減量サポート</span><h3 class="product-name">Impact ダイエット ホエイ</h3><div class="stars">★★★★☆ <span>4.5</span></div><p class="card-text">ダイエット中のたんぱく質補給に使いやすい。食事管理とセットで検討できます。</p><div class="bestfor">減量・置き換え・間食対策</div><a class="btn btn-primary" href="https://creatorlink.shop/3NzDlfB" target="_blank" rel="sponsored nofollow noopener noreferrer">商品を見る →</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="compare" class="section section-white">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">COMPARISON TABLE</p>
+          <h2>目的別に選べる比較表</h2>
+          <p class="section-desc">増量、減量、筋力アップ、健康サポートなど、目的に合わせて商品を選べます。</p>
+        </div>
+        <div class="compare-table">
+          <div class="table-row table-head"><div>目的</div><div>おすすめ商品</div><div>こんな人向け</div><div>リンク</div></div>
+          <div class="table-row"><div><strong>最初の1袋</strong></div><div>Impact ホエイ / お試し商品 / シェイカー</div><div class="muted">初めてマイプロを買う人</div><div><a class="btn btn-dark" href="https://creatorlink.shop/3NAyF9i" target="_blank" rel="sponsored nofollow noopener noreferrer">見る →</a></div></div>
+          <div class="table-row"><div><strong>筋肥大・増量</strong></div><div>Impact ホエイ / ロールドオーツ / パンケーキミックス</div><div class="muted">食事量とたんぱく質量を増やしたい人</div><div><a class="btn btn-dark" href="https://creatorlink.shop/45s57kc" target="_blank" rel="sponsored nofollow noopener noreferrer">見る →</a></div></div>
+          <div class="table-row"><div><strong>筋力・競技力</strong></div><div>クレアチン / EAA / ベータアラニン / プレワークアウト</div><div class="muted">BIG3・格闘技・競技パフォーマンスを伸ばしたい人</div><div><a class="btn btn-dark" href="https://creatorlink.shop/42Cf6Bn" target="_blank" rel="sponsored nofollow noopener noreferrer">見る →</a></div></div>
+          <div class="table-row"><div><strong>減量・ボディメイク</strong></div><div>ダイエットホエイ / ホエイアイソレート / クリアホエイ</div><div class="muted">脂質・糖質を抑えながらたんぱく質を摂りたい人</div><div><a class="btn btn-dark" href="https://creatorlink.shop/3NzDlfB" target="_blank" rel="sponsored nofollow noopener noreferrer">見る →</a></div></div>
+          <div class="table-row"><div><strong>健康サプリ</strong></div><div>マルチビタミン / オメガ3 / ビタミンD3 / ZMA</div><div class="muted">食生活の不足を補いたい人</div><div><a class="btn btn-dark" href="https://creatorlink.shop/4b9oUIO" target="_blank" rel="sponsored nofollow noopener noreferrer">見る →</a></div></div>
+          <div class="table-row"><div><strong>ギア・ウェア</strong></div><div>リストラップ / リフティングストラップ / ベルト / ウェア</div><div class="muted">トレーニングの安定感を上げたい人</div><div><a class="btn btn-dark" href="https://creatorlink.shop/3LY9blA" target="_blank" rel="sponsored nofollow noopener noreferrer">見る →</a></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="purpose" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">PURPOSE GUIDE</p>
+          <h2>目的に合わせて選ぶ</h2>
+          <p class="section-desc">プロテイン選びで迷いやすいポイントを、目的別に分かりやすく整理しました。</p>
+        </div>
+        <div class="purpose-grid">
+          <article class="card card-pad"><span class="tag">商品選び</span><h3 class="product-name">人気ランキング・目的別おすすめ</h3><p class="card-text">マイプロテインのおすすめ商品を知りたい方におすすめです。</p><br><a class="btn btn-light" href="https://creatorlink.shop/3QJPPmb" target="_blank" rel="sponsored nofollow noopener noreferrer">ベストセラーを見る →</a></article>
+          <article class="card card-pad"><span class="tag">割引・クーポン</span><h3 class="product-name">セール活用・クーポン入力手順</h3><p class="card-text">マイプロテインをお得に買いたい方におすすめです。</p><br><a class="btn btn-light" href="https://creatorlink.shop/4bMhStB" target="_blank" rel="sponsored nofollow noopener noreferrer">セール対象を見る →</a></article>
+          <article class="card card-pad"><span class="tag">初回購入</span><h3 class="product-name">初心者向け購入ガイド</h3><p class="card-text">初めてプロテインを買う方におすすめです。</p><br><a class="btn btn-light" href="https://creatorlink.shop/3NAyF9i" target="_blank" rel="sponsored nofollow noopener noreferrer">お試し商品を見る →</a></article>
+          <article class="card card-pad"><span class="tag">味・飲みやすさ</span><h3 class="product-name">人気フレーバー比較</h3><p class="card-text">飲みやすいプロテインを選びたい方におすすめです。</p><br><a class="btn btn-light" href="https://creatorlink.shop/45s57kc" target="_blank" rel="sponsored nofollow noopener noreferrer">Impact ホエイを見る →</a></article>
+          <article class="card card-pad"><span class="tag">一般プロテイン比較</span><h3 class="product-name">目的別プロテイン選び</h3><p class="card-text">筋トレ目的でプロテインを選びたい方におすすめです。</p><br><a class="btn btn-light" href="https://creatorlink.shop/45s57kc" target="_blank" rel="sponsored nofollow noopener noreferrer">目的別に選ぶ →</a></article>
+          <article class="card card-pad"><span class="tag">成分比較</span><h3 class="product-name">EAA・BCAA比較ガイド</h3><p class="card-text">トレーニング中の栄養補給で迷っている方におすすめです。</p><br><a class="btn btn-light" href="https://creatorlink.shop/4rfrOk5" target="_blank" rel="sponsored nofollow noopener noreferrer">EAAを見る →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="guide" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">BUYING GUIDE</p>
+          <h2>購入前に知っておきたいこと</h2>
+        </div>
+        <div class="guide-grid">
+          <article class="card card-pad"><span class="tag">初回購入</span><h3 class="product-name">初心者は何から買うべき？</h3><p class="card-text">まずはImpact ホエイ、シェイカー、お試し商品から選ぶと失敗しにくいです。</p><br><a class="btn btn-light" href="https://creatorlink.shop/3NAyF9i" target="_blank" rel="sponsored nofollow noopener noreferrer">関連商品を見る →</a></article>
+          <article class="card card-pad"><span class="tag">割引攻略</span><h3 class="product-name">お得に買う手順</h3><p class="card-text">セール対象商品を選び、購入画面でPROTEINWAOKAZUを入力するだけです。</p><br><a class="btn btn-light" href="https://creatorlink.shop/4bMhStB" target="_blank" rel="sponsored nofollow noopener noreferrer">関連商品を見る →</a></article>
+          <article class="card card-pad"><span class="tag">比較</span><h3 class="product-name">ホエイとEAAの違い</h3><p class="card-text">毎日のたんぱく質補給はホエイ、トレーニング中の補給はEAAという整理が分かりやすいです。</p><br><a class="btn btn-light" href="https://creatorlink.shop/4rfrOk5" target="_blank" rel="sponsored nofollow noopener noreferrer">関連商品を見る →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="coupon" class="coupon-section">
+      <div class="container">
+        <div class="coupon-panel">
+          <div class="coupon-panel-grid">
             <div>
-              <p className="text-base font-black tracking-tight">プロテイン攻略ナビ</p>
-              <p className="text-xs font-bold text-slate-500">お得に買える購入ガイド</p>
-            </div>
-          </a>
-          <nav className="hidden items-center gap-7 text-sm font-bold text-slate-600 lg:flex">
-            <a href="#ranking" className="hover:text-sky-500">ランキング</a>
-            <a href="#compare" className="hover:text-sky-500">目的別比較</a>
-            <a href="#guide" className="hover:text-sky-500">買い方ガイド</a>
-            <a href="#coupon" className="hover:text-sky-500">クーポン</a>
-          </nav>
-          <AffiliateButton href={links.sale} variant="dark" className="hidden md:inline-flex">
-            セールを見る
-          </AffiliateButton>
-        </div>
-      </header>
-
-      <section id="top" className="relative overflow-hidden bg-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(14,165,233,0.18),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(250,204,21,0.16),transparent_30%)]" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
-          <div className="flex flex-col justify-center">
-            <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-black text-sky-700">
-              <Sparkles className="h-4 w-4" />
-              迷わず選べるマイプロテイン購入ガイド
-            </div>
-            <h1 className="max-w-3xl text-4xl font-black leading-tight tracking-tight md:text-6xl">
-              マイプロテインを、
-              <span className="text-sky-500">最安級</span>で賢く買う。
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg font-medium leading-8 text-slate-600">
-              目的別におすすめ商品を整理し、セール対象ページと商品ページへ最短で案内します。購入画面ではクーポンコードを忘れずに入力してください。
-            </p>
-
-            <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-5 shadow-2xl shadow-slate-200/70">
-              <p className="text-sm font-black text-slate-500">当サイト推奨クーポンコード</p>
-              <div className="mt-2 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                <div className="rounded-2xl border-2 border-dashed border-sky-300 bg-sky-50 px-5 py-4">
-                  <p className="text-3xl font-black tracking-tight text-slate-950 md:text-4xl">{COUPON_CODE}</p>
-                </div>
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <AffiliateButton href={links.sale} variant="primary">
-                    セール対象を見る
-                  </AffiliateButton>
-                  <AffiliateButton href={links.impactWhey} variant="light">
-                    まずは定番を見る
-                  </AffiliateButton>
-                </div>
+              <div class="badge" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.12);color:#fde047">％ 購入画面で使えるクーポンコード</div>
+              <h2>セール商品を選んで、<span style="color:#fde047">クーポンコード</span>を入力。</h2>
+              <p>気になる商品を選んだら、購入画面でクーポンコードを入力してください。価格や割引率は販売ページで確認できます。</p>
+              <div class="btn-row" style="margin-top:26px">
+                <a class="btn btn-yellow" href="https://creatorlink.shop/4bMhStB" target="_blank" rel="sponsored nofollow noopener noreferrer">セール対象商品を見る →</a>
+                <a class="btn btn-light" href="https://creatorlink.shop/4qFtZgW" target="_blank" rel="sponsored nofollow noopener noreferrer">公式サイトを見る →</a>
               </div>
             </div>
-
-            <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {trustItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div key={item.text} className="flex items-center gap-2 rounded-2xl bg-slate-50 px-3 py-3 text-sm font-bold text-slate-700">
-                    <Icon className="h-4 w-4 text-sky-500" />
-                    {item.text}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="absolute -right-8 top-8 z-20 rounded-full bg-yellow-300 px-5 py-4 text-center font-black text-slate-950 shadow-xl shadow-yellow-300/40 rotate-6">
-              お得に<br />購入
-            </div>
-            <div className="rounded-[2rem] bg-slate-950 p-5 shadow-2xl shadow-slate-900/30">
-              <div className="rounded-[1.5rem] bg-gradient-to-br from-slate-900 via-slate-800 to-sky-900 p-7 text-white">
-                <p className="text-sm font-bold text-sky-200">目的別おすすめマップ</p>
-                <div className="mt-8 grid gap-4">
-                  {[
-                    ["Impact ホエイ", "王道", "bg-white text-slate-950"],
-                    ["EAA / BCAA", "トレ中", "bg-sky-400 text-white"],
-                    ["クレアチン", "筋力", "bg-emerald-400 text-slate-950"],
-                    ["ダイエットホエイ", "減量", "bg-pink-300 text-slate-950"],
-                  ].map(([name, tag, cls]) => (
-                    <div key={name} className={`flex items-center justify-between rounded-3xl p-5 ${cls}`}>
-                      <div>
-                        <p className="text-xl font-black">{name}</p>
-                        <p className="text-sm font-bold opacity-70">目的別おすすめ</p>
-                      </div>
-                      <span className="rounded-full bg-slate-950/10 px-3 py-1 text-sm font-black">{tag}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-8 rounded-3xl bg-white/10 p-5 backdrop-blur">
-                  <p className="text-sm font-bold text-slate-300">買い方の流れ</p>
-                  <p className="mt-2 text-2xl font-black">商品を選ぶ → セールを確認 → コード入力</p>
-                </div>
-              </div>
+            <div class="coupon-code-big">
+              <small>購入画面で入力</small>
+              <p>PROTEINWAOKAZU</p>
+              <div style="border-radius:18px;background:#fef9c3;color:#854d0e;padding:12px;font-weight:950;font-size:14px">セールページへ遷移後、購入画面でコード入力</div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-10">
-        <div className="grid gap-4 md:grid-cols-4">
-          {[
-            [Gift, "初回購入", "お試し商品・シェイカーへ誘導"],
-            [Flame, "セール活用", "クーポンコードを使ってお得に購入"],
-            [ShoppingCart, "商品別に選べる", "気になる商品をすぐに確認"],
-            [Star, "比較で納得", "目的に合う商品を選びやすい"],
-          ].map(([Icon, title, body]) => (
-            <Card key={title} className="rounded-3xl border-slate-200 bg-white shadow-sm">
-              <CardContent className="p-6">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-50 text-sky-500">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <p className="text-lg font-black">{title}</p>
-                <p className="mt-2 text-sm font-medium leading-6 text-slate-600">{body}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
+    <section class="container" style="padding-bottom:72px">
+      <div class="notice">
+        <strong>広告表記</strong>
+        当サイトはアフィリエイト広告を利用しています。掲載しているリンクから商品を購入すると、当サイトに報酬が発生する場合があります。商品情報や価格、割引率は販売ページで必ず確認してください。
+      </div>
+    </section>
+  </main>
 
-      <section id="ranking" className="mx-auto max-w-7xl px-5 py-16">
-        <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-          <div>
-            <p className="text-sm font-black text-sky-500">POPULAR RANKING</p>
-            <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">マイプロテインおすすめランキング</h2>
-            <p className="mt-4 max-w-2xl text-base font-medium leading-7 text-slate-600">
-              初めての方でも選びやすいように、目的別に人気の商品をまとめました。
-            </p>
-          </div>
-          <AffiliateButton href={links.bestsellers} variant="light">
-            ベストセラーを見る
-          </AffiliateButton>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="logo" href="#top"><span class="logo-mark">🏋️</span><span>プロテイン攻略ナビ<span class="logo-sub">お得に買える購入ガイド</span></span></a>
+        <p>マイプロテインの商品選び、セール活用、クーポンコード入力までを分かりやすく案内する独立系アフィリエイトメディアです。</p>
+      </div>
+      <div>
+        <h3>商品</h3>
+        <div class="footer-links">
+          <a href="https://creatorlink.shop/45s57kc" target="_blank" rel="sponsored nofollow noopener noreferrer">Impact ホエイ</a>
+          <a href="https://creatorlink.shop/4rfrOk5" target="_blank" rel="sponsored nofollow noopener noreferrer">Impact EAA</a>
+          <a href="https://creatorlink.shop/42Cf6Bn" target="_blank" rel="sponsored nofollow noopener noreferrer">クレアチン</a>
+          <a href="https://creatorlink.shop/4tE9Wku" target="_blank" rel="sponsored nofollow noopener noreferrer">クリアホエイ</a>
         </div>
-
-        <div className="grid gap-5 lg:grid-cols-5">
-          {rankingProducts.map((product) => {
-            const Icon = product.icon;
-            return (
-              <Card key={product.name} className="group overflow-hidden rounded-3xl border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-                <div className={`h-36 bg-gradient-to-br ${product.color} p-5`}>
-                  <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-slate-950 shadow-sm">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <div className="rounded-full bg-slate-950 px-3 py-1 text-sm font-black text-white">No.{product.rank}</div>
-                  </div>
-                  <div className="mt-5 h-10 w-24 rounded-2xl bg-white/70" />
-                </div>
-                <CardContent className="flex min-h-[360px] flex-col p-5">
-                  <span className="mb-3 w-fit rounded-full bg-sky-50 px-3 py-1 text-xs font-black text-sky-600">{product.tag}</span>
-                  <h3 className="text-xl font-black leading-tight">{product.name}</h3>
-                  <div className="mt-3 flex items-center gap-1 text-yellow-400">
-                    {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
-                    <span className="ml-2 text-sm font-black text-slate-700">{product.score}</span>
-                  </div>
-                  <p className="mt-4 text-sm font-medium leading-7 text-slate-600">{product.summary}</p>
-                  <div className="mt-4 rounded-2xl bg-slate-50 p-3 text-sm font-bold text-slate-700">
-                    {product.bestFor}
-                  </div>
-                  <div className="mt-auto pt-5">
-                    <AffiliateButton href={product.href} variant="primary" className="w-full">
-                      商品を見る
-                    </AffiliateButton>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+      </div>
+      <div>
+        <h3>買い方</h3>
+        <div class="footer-links">
+          <a href="https://creatorlink.shop/4bMhStB" target="_blank" rel="sponsored nofollow noopener noreferrer">セールを見る</a>
+          <a href="https://creatorlink.shop/3QJPPmb" target="_blank" rel="sponsored nofollow noopener noreferrer">人気商品を見る</a>
+          <a href="https://creatorlink.shop/3NAyF9i" target="_blank" rel="sponsored nofollow noopener noreferrer">お試し商品</a>
         </div>
-      </section>
-
-      <section id="compare" className="bg-white py-16">
-        <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-10">
-            <p className="text-sm font-black text-sky-500">COMPARISON TABLE</p>
-            <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">目的別に選べる比較表</h2>
-            <p className="mt-4 max-w-2xl text-base font-medium leading-7 text-slate-600">
-              増量、減量、筋力アップ、健康サポートなど、目的に合わせて商品を選べます。
-            </p>
-          </div>
-
-          <div className="overflow-hidden rounded-[2rem] border border-slate-200 shadow-xl shadow-slate-200/60">
-            <div className="grid grid-cols-12 bg-slate-950 px-5 py-4 text-sm font-black text-white">
-              <div className="col-span-3">目的</div>
-              <div className="col-span-4">おすすめ商品</div>
-              <div className="col-span-3 hidden md:block">こんな人向け</div>
-              <div className="col-span-5 text-right md:col-span-2">CTA</div>
-            </div>
-            {categoryRows.map((row, index) => (
-              <div key={row.category} className={`grid grid-cols-12 items-center gap-3 px-5 py-5 text-sm ${index % 2 === 0 ? "bg-white" : "bg-slate-50"}`}>
-                <div className="col-span-3 font-black text-slate-950">{row.category}</div>
-                <div className="col-span-4 font-bold leading-6 text-slate-700">{row.products}</div>
-                <div className="col-span-3 hidden font-medium leading-6 text-slate-600 md:block">{row.user}</div>
-                <div className="col-span-5 text-right md:col-span-2">
-                  <a href={row.href} target="_blank" rel={affiliateRel} className="inline-flex items-center justify-center rounded-full bg-slate-950 px-4 py-2 text-xs font-black text-white hover:bg-sky-500">
-                    {row.cta}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
+      </div>
+      <div>
+        <h3>運営</h3>
+        <div class="footer-links">
+          <a href="privacy.html">プライバシーポリシー</a>
+          <a href="contact.html">お問い合わせ</a>
+          <a href="#top">ページ上部へ</a>
         </div>
-      </section>
-
-      <section id="seo" className="mx-auto max-w-7xl px-5 py-16">
-        <div className="mb-10">
-          <p className="text-sm font-black text-sky-500">PURPOSE GUIDE</p>
-          <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">目的に合わせて選ぶ</h2>
-          <p className="mt-4 max-w-3xl text-base font-medium leading-7 text-slate-600">
-            プロテイン選びで迷いやすいポイントを、目的別に分かりやすく整理しました。
-          </p>
-        </div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {seoClusters.map((cluster) => (
-            <Card key={cluster.keyword} className="rounded-3xl border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-              <CardContent className="p-6">
-                <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-black text-sky-600">{cluster.intent}</span>
-                <h3 className="mt-5 text-xl font-black leading-tight">{cluster.page}</h3>
-                <p className="mt-3 text-sm font-medium leading-7 text-slate-600">{cluster.keyword}について知りたい方におすすめです。</p>
-                <AffiliateButton href={cluster.href} variant="light" className="mt-5 w-full">
-                  {cluster.cta}
-                </AffiliateButton>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      <section id="guide" className="mx-auto max-w-7xl px-5 py-16">
-        <div className="mb-10">
-          <p className="text-sm font-black text-sky-500">BUYING GUIDE</p>
-          <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">購入前に知っておきたいこと</h2>
-        </div>
-        <div className="grid gap-5 md:grid-cols-3">
-          {guideCards.map((card) => (
-            <Card key={card.title} className="rounded-3xl border-slate-200 bg-white shadow-sm">
-              <CardContent className="p-6">
-                <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-black text-yellow-700">{card.label}</span>
-                <h3 className="mt-5 text-2xl font-black leading-tight">{card.title}</h3>
-                <p className="mt-4 min-h-[84px] text-sm font-medium leading-7 text-slate-600">{card.body}</p>
-                <AffiliateButton href={card.href} variant="light" className="mt-6 w-full">
-                  関連商品を見る
-                </AffiliateButton>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      <section id="coupon" className="mx-auto max-w-7xl px-5 py-16">
-        <div className="overflow-hidden rounded-[2rem] bg-slate-950 shadow-2xl shadow-slate-900/30">
-          <div className="grid gap-8 p-8 text-white md:grid-cols-[1.1fr_0.9fr] md:p-12">
-            <div>
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-black text-yellow-300">
-                <BadgePercent className="h-4 w-4" />
-                購入画面で使えるクーポンコード
-              </div>
-              <h2 className="text-3xl font-black leading-tight tracking-tight md:text-5xl">
-                セール商品を選んで、
-                <span className="text-yellow-300">クーポンコード</span>を入力。
-              </h2>
-              <p className="mt-5 max-w-2xl text-base font-medium leading-8 text-slate-300">
-                気になる商品を選んだら、購入画面でクーポンコードを入力してください。価格や割引率は販売ページで確認できます。
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <AffiliateButton href={links.sale} variant="yellow">
-                  セール対象商品を見る
-                </AffiliateButton>
-                <AffiliateButton href={links.official} variant="light">
-                  公式サイトを見る
-                </AffiliateButton>
-              </div>
-            </div>
-            <div className="flex items-center justify-center">
-              <div className="w-full rounded-[2rem] border-2 border-dashed border-yellow-300 bg-white p-7 text-center text-slate-950">
-                <p className="text-sm font-black text-slate-500">購入画面で入力</p>
-                <p className="mt-3 break-all text-4xl font-black tracking-tight md:text-5xl">{COUPON_CODE}</p>
-                <p className="mt-4 rounded-2xl bg-yellow-100 px-4 py-3 text-sm font-black text-yellow-800">
-                  セールページへ遷移後、購入画面でコード入力
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-5 pb-16">
-        <div className="rounded-3xl border border-amber-200 bg-amber-50 p-6 text-sm font-medium leading-7 text-amber-900">
-          <p className="font-black">広告表記</p>
-          <p className="mt-2">
-            当サイトはアフィリエイト広告を利用しています。掲載しているリンクから商品を購入すると、当サイトに報酬が発生する場合があります。商品情報や価格、割引率は販売ページで必ず確認してください。
-          </p>
-          
-        </div>
-      </section>
-
-      <footer className="bg-slate-950 px-5 py-12 text-white">
-        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
-          <div>
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-sky-500">
-                <Dumbbell className="h-5 w-5" />
-              </div>
-              <p className="text-lg font-black">プロテイン攻略ナビ</p>
-            </div>
-            <p className="mt-4 max-w-md text-sm font-medium leading-7 text-slate-400">
-              マイプロテインの商品選び、セール活用、クーポンコード入力までを分かりやすく案内する独立系アフィリエイトメディアです。
-            </p>
-          </div>
-          <div>
-            <p className="font-black">商品</p>
-            <div className="mt-4 grid gap-3 text-sm text-slate-400">
-              <a href={links.impactWhey} target="_blank" rel={affiliateRel}>Impact ホエイ</a>
-              <a href={links.impactEaa} target="_blank" rel={affiliateRel}>Impact EAA</a>
-              <a href={links.creatinePowder} target="_blank" rel={affiliateRel}>クレアチン</a>
-            </div>
-          </div>
-          <div>
-            <p className="font-black">買い方</p>
-            <div className="mt-4 grid gap-3 text-sm text-slate-400">
-              <a href={links.sale} target="_blank" rel={affiliateRel}>セールを見る</a>
-              <a href={links.bestsellers} target="_blank" rel={affiliateRel}>人気商品を見る</a>
-              <a href={links.trial} target="_blank" rel={affiliateRel}>お試し商品</a>
-            </div>
-          </div>
-          <div>
-            <p className="font-black">運営</p>
-            <div className="mt-4 grid gap-3 text-sm text-slate-400">
-              <a href="#">運営者情報</a>
-              <a href="#">お問い合わせ</a>
-              <a href="#">プライバシーポリシー</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </main>
-  );
-}
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
