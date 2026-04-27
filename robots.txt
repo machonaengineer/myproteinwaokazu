@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://machonaengineer.github.io/myprotein-site/sitemap.xml
