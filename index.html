@@ -48,7 +48,7 @@ const links = {
   creatineTablet: "https://creatorlink.shop/4bexaHB",
   dietWhey: "https://creatorlink.shop/3NzDlfB",
   wheyIsolate: "https://creatorlink.shop/49exbt1",
-  clearWhey: "https://creatorlink.shop/49exbt1",
+  clearWhey: "https://creatorlink.shop/4tE9Wku",
   clearProteinSeries: "https://creatorlink.shop/3M1TycP",
   soyProtein: "https://creatorlink.shop/4qKbXdy",
   shaker: "https://creatorlink.shop/49Hmno6",
@@ -202,7 +202,7 @@ const guideCards = [
   {
     title: "最安で買う手順",
     label: "割引攻略",
-    body: `セール対象商品を選び、購入画面で ${COUPON_CODE} を入力する導線を明確化。`,
+    body: `セール対象商品を選び、購入画面で ${COUPON_CODE} を入力するだけ。`,
     href: links.sale,
   },
   {
@@ -278,10 +278,10 @@ const faqItems = [
 ];
 
 const trustItems = [
-  { icon: BadgePercent, text: "クーポン導線を明確化" },
-  { icon: Crown, text: "人気商品を優先表示" },
-  { icon: CheckCircle2, text: "初心者向けに分類" },
-  { icon: ShieldCheck, text: "広告表記を明示" },
+  { icon: BadgePercent, text: "クーポンが使いやすい" },
+  { icon: Crown, text: "人気商品から選べる" },
+  { icon: CheckCircle2, text: "初心者にも分かりやすい" },
+  { icon: ShieldCheck, text: "目的別に比較できる" },
 ];
 
 export default function MyproteinAffiliateMock() {
@@ -299,7 +299,7 @@ export default function MyproteinAffiliateMock() {
             </div>
             <div>
               <p className="text-base font-black tracking-tight">プロテイン攻略ナビ</p>
-              <p className="text-xs font-bold text-slate-500">MyProtein affiliate media</p>
+              <p className="text-xs font-bold text-slate-500">お得に買える購入ガイド</p>
             </div>
           </a>
           <nav className="hidden items-center gap-7 text-sm font-bold text-slate-600 lg:flex">
@@ -362,11 +362,11 @@ export default function MyproteinAffiliateMock() {
 
           <div className="relative">
             <div className="absolute -right-8 top-8 z-20 rounded-full bg-yellow-300 px-5 py-4 text-center font-black text-slate-950 shadow-xl shadow-yellow-300/40 rotate-6">
-              国内最大級<br />割引訴求
+              お得に<br />購入
             </div>
             <div className="rounded-[2rem] bg-slate-950 p-5 shadow-2xl shadow-slate-900/30">
               <div className="rounded-[1.5rem] bg-gradient-to-br from-slate-900 via-slate-800 to-sky-900 p-7 text-white">
-                <p className="text-sm font-bold text-sky-200">MYPROTEIN BUYING MAP</p>
+                <p className="text-sm font-bold text-sky-200">目的別おすすめマップ</p>
                 <div className="mt-8 grid gap-4">
                   {[
                     ["Impact ホエイ", "王道", "bg-white text-slate-950"],
@@ -377,15 +377,15 @@ export default function MyproteinAffiliateMock() {
                     <div key={name} className={`flex items-center justify-between rounded-3xl p-5 ${cls}`}>
                       <div>
                         <p className="text-xl font-black">{name}</p>
-                        <p className="text-sm font-bold opacity-70">目的別おすすめ商品</p>
+                        <p className="text-sm font-bold opacity-70">目的別おすすめ</p>
                       </div>
                       <span className="rounded-full bg-slate-950/10 px-3 py-1 text-sm font-black">{tag}</span>
                     </div>
                   ))}
                 </div>
                 <div className="mt-8 rounded-3xl bg-white/10 p-5 backdrop-blur">
-                  <p className="text-sm font-bold text-slate-300">購入導線</p>
-                  <p className="mt-2 text-2xl font-black">商品を選ぶ → セールを見る → コード入力</p>
+                  <p className="text-sm font-bold text-slate-300">買い方の流れ</p>
+                  <p className="mt-2 text-2xl font-black">商品を選ぶ → セールを確認 → コード入力</p>
                 </div>
               </div>
             </div>
@@ -397,9 +397,9 @@ export default function MyproteinAffiliateMock() {
         <div className="grid gap-4 md:grid-cols-4">
           {[
             [Gift, "初回購入", "お試し商品・シェイカーへ誘導"],
-            [Flame, "セール訴求", "PROTEINWAOKAZUを強調"],
-            [ShoppingCart, "商品別CTA", "各アフィリエイトURLへ直リンク"],
-            [Star, "比較で納得", "目的別に選びやすく整理"],
+            [Flame, "セール活用", "クーポンコードを使ってお得に購入"],
+            [ShoppingCart, "商品別に選べる", "気になる商品をすぐに確認"],
+            [Star, "比較で納得", "目的に合う商品を選びやすい"],
           ].map(([Icon, title, body]) => (
             <Card key={title} className="rounded-3xl border-slate-200 bg-white shadow-sm">
               <CardContent className="p-6">
@@ -418,9 +418,9 @@ export default function MyproteinAffiliateMock() {
         <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
             <p className="text-sm font-black text-sky-500">POPULAR RANKING</p>
-            <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">まず載せるべき主力ランキング</h2>
+            <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">マイプロテインおすすめランキング</h2>
             <p className="mt-4 max-w-2xl text-base font-medium leading-7 text-slate-600">
-              初稿ではCVしやすい王道商品を優先。全商品を並べるより、買う理由が強い商品から見せます。
+              初めての方でも選びやすいように、目的別に人気の商品をまとめました。
             </p>
           </div>
           <AffiliateButton href={links.bestsellers} variant="light">
@@ -471,7 +471,7 @@ export default function MyproteinAffiliateMock() {
             <p className="text-sm font-black text-sky-500">COMPARISON TABLE</p>
             <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">目的別に選べる比較表</h2>
             <p className="mt-4 max-w-2xl text-base font-medium leading-7 text-slate-600">
-              上のモックのように、単なるリンク一覧ではなく「誰に何を売るか」が一目で分かる表にします。
+              増量、減量、筋力アップ、健康サポートなど、目的に合わせて商品を選べます。
             </p>
           </div>
 
@@ -500,10 +500,10 @@ export default function MyproteinAffiliateMock() {
 
       <section id="seo" className="mx-auto max-w-7xl px-5 py-16">
         <div className="mb-10">
-          <p className="text-sm font-black text-sky-500">SEO CONTENT HUB</p>
-          <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">SEOは単発LPではなく、検索意図ごとの面展開で取る</h2>
+          <p className="text-sm font-black text-sky-500">PURPOSE GUIDE</p>
+          <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">目的に合わせて選ぶ</h2>
           <p className="mt-4 max-w-3xl text-base font-medium leading-7 text-slate-600">
-            「マイプロテイン」「プロテイン」の単体キーワードだけを狙うと競合が強すぎるため、購入直前のロングテールを束ねて、最終的にこのページへ集約します。
+            プロテイン選びで迷いやすいポイントを、目的別に分かりやすく整理しました。
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -511,8 +511,8 @@ export default function MyproteinAffiliateMock() {
             <Card key={cluster.keyword} className="rounded-3xl border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
               <CardContent className="p-6">
                 <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-black text-sky-600">{cluster.intent}</span>
-                <h3 className="mt-5 text-xl font-black leading-tight">{cluster.keyword}</h3>
-                <p className="mt-3 text-sm font-medium leading-7 text-slate-600">想定ページ：{cluster.page}</p>
+                <h3 className="mt-5 text-xl font-black leading-tight">{cluster.page}</h3>
+                <p className="mt-3 text-sm font-medium leading-7 text-slate-600">{cluster.keyword}について知りたい方におすすめです。</p>
                 <AffiliateButton href={cluster.href} variant="light" className="mt-5 w-full">
                   {cluster.cta}
                 </AffiliateButton>
@@ -525,7 +525,7 @@ export default function MyproteinAffiliateMock() {
       <section id="guide" className="mx-auto max-w-7xl px-5 py-16">
         <div className="mb-10">
           <p className="text-sm font-black text-sky-500">BUYING GUIDE</p>
-          <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">記事導線で購買前の不安を潰す</h2>
+          <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">購入前に知っておきたいこと</h2>
         </div>
         <div className="grid gap-5 md:grid-cols-3">
           {guideCards.map((card) => (
@@ -549,14 +549,14 @@ export default function MyproteinAffiliateMock() {
             <div>
               <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-black text-yellow-300">
                 <BadgePercent className="h-4 w-4" />
-                クーポンコードをLP内で完結表示
+                購入画面で使えるクーポンコード
               </div>
               <h2 className="text-3xl font-black leading-tight tracking-tight md:text-5xl">
-                公式クーポンページには飛ばさず、
-                <span className="text-yellow-300">このコード</span>を主役にする。
+                セール商品を選んで、
+                <span className="text-yellow-300">クーポンコード</span>を入力。
               </h2>
               <p className="mt-5 max-w-2xl text-base font-medium leading-8 text-slate-300">
-                公式クーポン一覧に飛ばすと別コードに流れる可能性があるため、LP内でコードを強調し、セールページまたは商品ページへ直接送ります。
+                気になる商品を選んだら、購入画面でクーポンコードを入力してください。価格や割引率は販売ページで確認できます。
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <AffiliateButton href={links.sale} variant="yellow">
@@ -586,9 +586,7 @@ export default function MyproteinAffiliateMock() {
           <p className="mt-2">
             当サイトはアフィリエイト広告を利用しています。掲載しているリンクから商品を購入すると、当サイトに報酬が発生する場合があります。商品情報や価格、割引率は販売ページで必ず確認してください。
           </p>
-          <p className="mt-2 font-black">
-            制作メモ：クリア ホエイ プロテインのURLはImpact ホエイ アイソレートと同一のため、正しいURLが確認できたら差し替えます。
-          </p>
+          
         </div>
       </section>
 
